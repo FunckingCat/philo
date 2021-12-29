@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 10:47:22 by tyamcha           #+#    #+#             */
-/*   Updated: 2021/12/27 20:58:28 by unix             ###   ########.fr       */
+/*   Updated: 2021/12/29 14:18:28 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 int	main(int argc, char **argv)
 {
-	printf("It works!\n");
+	printf("%" PRIu64 "\n", get_time());
 	return (0);
 }

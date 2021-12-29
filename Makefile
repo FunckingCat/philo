@@ -6,7 +6,7 @@
 #    By: unix <unix@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/08 14:23:43 by unix              #+#    #+#              #
-#    Updated: 2021/12/29 14:10:05 by unix             ###   ########.fr        #
+#    Updated: 2021/12/29 14:19:02 by unix             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,9 @@ FLAGS =
 #FLAGS = -Wall -Werror -Wextra
 LIB = -lpthread
 
-HEADER = philo.h utils.c
+HEADER = philo.h
 
-MAIN_FILES = main.c
+MAIN_FILES = main.c utils.c
 
 SRC = $(MAIN_FILES:.c=.o)
 
