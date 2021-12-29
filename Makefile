@@ -6,7 +6,7 @@
 #    By: unix <unix@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/08 14:23:43 by unix              #+#    #+#              #
-#    Updated: 2021/12/29 14:19:02 by unix             ###   ########.fr        #
+#    Updated: 2021/12/29 14:36:20 by unix             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ all: $(NAME)
 	$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME): $(SRC)
-	$(CC) $(FLAGS) $(LIB) -o $(NAME) $(SRC) 
+	$(CC) $(FLAGS) -o $(NAME) $(SRC) $(LIB)
 
 clean:
 	$(RM) $(SRC)

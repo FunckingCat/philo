@@ -6,11 +6,17 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 14:09:45 by unix              #+#    #+#             */
-/*   Updated: 2021/12/29 14:20:08 by unix             ###   ########.fr       */
+/*   Updated: 2021/12/29 15:12:07 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	error(char *msg)
+{
+	printf("Error: %s\n", msg);
+	return (1);
+}
 
 int	ft_atoi(const char *str)
 {
@@ -25,7 +31,9 @@ int	ft_atoi(const char *str)
 	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v' ||
 			str[i] == '\f' || str[i] == '\r' || str[i] == ' ')
 		i++;
-	is_neg = (str[i] == '-') ? -1 : 1;
+	is_neg = 1;
+	if (str[i] == '-')
+		is_neg = -1;
 	if (is_neg == -1 || str[i] == '+')
 		i++;
 	start = i;
