@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 10:47:27 by tyamcha           #+#    #+#             */
-/*   Updated: 2021/12/29 15:12:12 by unix             ###   ########.fr       */
+/*   Updated: 2021/12/30 14:44:05 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,12 @@ typedef struct		s_state
 //UTILS
 int			ft_atoi(const char *str);
 uint64_t	get_time(void);
+
+//EXIT
 int			error(char *msg);
+int			clear_state(t_state *state);
+
+//INIT
+int			init(t_state *state, int argc, char **argv);
 
 #endif

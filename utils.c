@@ -6,17 +6,11 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 14:09:45 by unix              #+#    #+#             */
-/*   Updated: 2021/12/29 15:12:07 by unix             ###   ########.fr       */
+/*   Updated: 2021/12/30 14:39:09 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-int	error(char *msg)
-{
-	printf("Error: %s\n", msg);
-	return (1);
-}
 
 int	ft_atoi(const char *str)
 {

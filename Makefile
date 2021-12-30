@@ -6,7 +6,7 @@
 #    By: unix <unix@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/08 14:23:43 by unix              #+#    #+#              #
-#    Updated: 2021/12/29 14:36:20 by unix             ###   ########.fr        #
+#    Updated: 2021/12/30 14:44:27 by unix             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LIB = -lpthread
 
 HEADER = philo.h
 
-MAIN_FILES = main.c utils.c
+MAIN_FILES = main.c utils.c exit.c init.c
 
 SRC = $(MAIN_FILES:.c=.o)
 
@@ -41,9 +41,9 @@ fclean: clean
 re: fclean all
 
 tt: all
-	./philo 3 400 50 100
+	./philo 3 400 100 100
 
 ttt: all
-	./philo 3 400 50 100 5
+	./philo 3 400 100 100 5
 
 .PHONY: all clean fclean re bonus
