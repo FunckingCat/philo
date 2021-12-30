@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 10:47:27 by tyamcha           #+#    #+#             */
-/*   Updated: 2021/12/30 14:44:05 by unix             ###   ########.fr       */
+/*   Updated: 2021/12/30 14:57:41 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ typedef struct		s_state
 	uint64_t		tm_sleep;
 	uint64_t		start;
 	t_philo			*philos;
-	pthread_mutex_t	*forks_m;
-	pthread_mutex_t	write_m;
-	pthread_mutex_t	somebody_dead_m;
+	pthread_mutex_t	*forks;
+	pthread_mutex_t	write;
+	pthread_mutex_t	death_occur;
 }					t_state;
 
 //UTILS
