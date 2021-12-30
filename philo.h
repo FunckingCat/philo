@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 10:47:27 by tyamcha           #+#    #+#             */
-/*   Updated: 2021/12/30 14:57:41 by unix             ###   ########.fr       */
+/*   Updated: 2021/12/30 18:22:58 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,13 @@
 # include <pthread.h>
 # include <sys/time.h>
 # include <stdint.h>
-#include <inttypes.h>
+# include <inttypes.h>
+
+# define EATING " is eating"
+# define SLEEPING " is sleeping"
+# define THINKING " is thinking"
+# define DIED " is died"
+# define TAKEN " has taken a fork"
 
 typedef struct		s_philo
 {
@@ -39,10 +45,10 @@ typedef struct		s_state
 {
 	int				amount;
 	int				must_eat;
+	uint64_t		start;
 	uint64_t		tm_die;
 	uint64_t		tm_eat;
 	uint64_t		tm_sleep;
-	uint64_t		start;
 	t_philo			*philos;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	write;
@@ -52,6 +58,7 @@ typedef struct		s_state
 //UTILS
 int			ft_atoi(const char *str);
 uint64_t	get_time(void);
+void		massage(t_philo *philo, char *msg);
 
 //EXIT
 int			error(char *msg);
