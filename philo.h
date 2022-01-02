@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 10:47:27 by tyamcha           #+#    #+#             */
-/*   Updated: 2022/01/02 17:20:10 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/02 18:22:40 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,5 @@ int			clear_state(t_state *state);
 int			init(t_state *state, int argc, char **argv);
 
 void	*philosoph(void *ptr);
-void	*observer(void	*ptr);
 
 #endif

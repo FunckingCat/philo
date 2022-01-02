@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 16:15:49 by unix              #+#    #+#             */
-/*   Updated: 2022/01/02 18:03:41 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/02 18:09:33 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void	*observer(void	*ptr)
 
 void	eat(t_philo *self)
 {
-	pthread_mutex_lock(&self->state->forks[self->fork_l]);
-	massage(self, TAKEN);
 	pthread_mutex_lock(&self->state->forks[self->fork_r]);
+	massage(self, TAKEN);
+	pthread_mutex_lock(&self->state->forks[self->fork_l]);
 	massage(self, TAKEN);
 	pthread_mutex_lock(&self->eating_m);
 	self->last_eat = get_time();
