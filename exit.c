@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 14:37:57 by unix              #+#    #+#             */
-/*   Updated: 2021/12/30 14:58:29 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/02 16:58:29 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	clear_state(t_state *state)
 		i = 0;
 		while (i < state->amount)
 		{
-			pthread_mutex_destroy(&state->philos[i].mutex);
+			pthread_mutex_destroy(&state->philos[i].eating_m);
 			pthread_mutex_destroy(&state->philos[i++].eat_m);
 		}
 		free(state->philos);

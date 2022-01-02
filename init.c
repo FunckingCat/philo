@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 14:38:01 by unix              #+#    #+#             */
-/*   Updated: 2021/12/30 15:00:24 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/02 17:30:54 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	init_forks(t_state *state)
 
 	pthread_mutex_init(&state->write, NULL);
 	pthread_mutex_init(&state->death_occur, NULL);
+	pthread_mutex_lock(&state->death_occur);
 	state->forks = malloc(sizeof(*(state->forks)) * state->amount);
 	if (!state->forks)
 		return (1);
@@ -40,7 +41,7 @@ void	init_philos(t_state *state)
 		state->philos[i].fork_l = (i + 1) % state->amount;
 		state->philos[i].eat_count = 0;
 		state->philos[i].state = state;
-		pthread_mutex_init(&state->philos[i].mutex, NULL);
+		pthread_mutex_init(&state->philos[i].eating_m, NULL);
 		pthread_mutex_init(&state->philos[i].eat_m, NULL);
 		pthread_mutex_lock(&state->philos[i].eat_m);
 		i++;
