@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 10:47:22 by tyamcha           #+#    #+#             */
-/*   Updated: 2022/01/02 17:56:18 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/02 18:27:59 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	*spectator(void	*ptr)
 		usleep(2500);
 	}
 	pthread_mutex_unlock(&state->death_occur);
+	return NULL; 
 }
 
 int	spawn_philo(t_state *state)

@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 14:09:45 by unix              #+#    #+#             */
-/*   Updated: 2022/01/02 18:26:23 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/02 18:28:36 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	massage(t_philo *philo, char *msg)
 int	ft_atoi(const char *str)
 {
 	int	i;
-	int	start;
 	int	is_neg;
 	int	res;
 
@@ -45,7 +44,6 @@ int	ft_atoi(const char *str)
 		is_neg = -1;
 	if (is_neg == -1 || str[i] == '+')
 		i++;
-	start = i;
 	res = 0;
 	while (str[i] >= '0' && str[i] <= '9')
 		res = (res * 10) + (str[i++] - '0');
