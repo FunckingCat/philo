@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 14:09:45 by unix              #+#    #+#             */
-/*   Updated: 2022/01/02 18:28:36 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/02 18:30:21 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int	ft_atoi(const char *str)
 	if (!str)
 		return (0);
 	i = 0;
-	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v' ||
-			str[i] == '\f' || str[i] == '\r' || str[i] == ' ')
+	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
+		|| str[i] == '\f' || str[i] == '\r' || str[i] == ' ')
 		i++;
 	is_neg = 1;
 	if (str[i] == '-')

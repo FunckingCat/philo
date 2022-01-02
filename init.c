@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 14:38:01 by unix              #+#    #+#             */
-/*   Updated: 2022/01/02 17:30:54 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/02 18:31:56 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	init(t_state *state, int argc, char **argv)
 		|| state->tm_eat < 60 || state->tm_sleep < 60
 		|| state->must_eat < 0)
 		return (1);
-	state->philos = (t_philo*)malloc(sizeof(*(state->philos)) * state->amount);
+	state->philos = (t_philo *)malloc(sizeof(*(state->philos)) * state->amount);
 	if (!state->philos)
 		return (1);
 	init_philos(state);

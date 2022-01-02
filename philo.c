@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   actions.c                                          :+:      :+:    :+:   */
+/*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 16:15:49 by unix              #+#    #+#             */
-/*   Updated: 2022/01/02 18:09:33 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/02 18:30:45 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*observer(void	*ptr)
 {
 	t_philo	*philo;
 
-	philo = (t_philo*)ptr;
+	philo = (t_philo *)ptr;
 	while (1)
 	{
 		pthread_mutex_lock(&philo->eating_m);
@@ -50,10 +50,10 @@ void	eat(t_philo *self)
 
 void	*philosoph(void *ptr)
 {
-	t_philo	*self;
+	t_philo		*self;
 	pthread_t	tid;
 
-	self = (t_philo*)ptr;
+	self = (t_philo *)ptr;
 	self->last_eat = get_time();
 	self->death_lim = self->last_eat + self->state->tm_die;
 	pthread_create(&tid, NULL, observer, ptr);
