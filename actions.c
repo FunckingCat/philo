@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 16:15:49 by unix              #+#    #+#             */
-/*   Updated: 2022/01/02 17:38:06 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/02 18:03:41 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,6 @@ void	*observer(void	*ptr)
 
 void	eat(t_philo *self)
 {
-	// if (self->state->must_eat > 0 && 
-	// 	self->eat_count >= self->state->must_eat)
-	// 	return ;
 	pthread_mutex_lock(&self->state->forks[self->fork_l]);
 	massage(self, TAKEN);
 	pthread_mutex_lock(&self->state->forks[self->fork_r]);
@@ -43,9 +40,9 @@ void	eat(t_philo *self)
 	pthread_mutex_lock(&self->eating_m);
 	self->last_eat = get_time();
 	self->death_lim = self->last_eat + self->state->tm_die;
-	self->eat_count++;
 	massage(self, EATING);
 	usleep(self->state->tm_eat * 1000);
+	self->eat_count++;
 	pthread_mutex_unlock(&self->eating_m);
 	pthread_mutex_unlock(&self->state->forks[self->fork_l]);
 	pthread_mutex_unlock(&self->state->forks[self->fork_r]);
