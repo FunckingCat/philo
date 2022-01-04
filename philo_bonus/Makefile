@@ -6,7 +6,7 @@
 #    By: unix <unix@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/08 14:23:43 by unix              #+#    #+#              #
-#    Updated: 2022/01/04 16:01:52 by unix             ###   ########.fr        #
+#    Updated: 2022/01/04 17:38:13 by unix             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,9 +41,9 @@ fclean: clean
 re: fclean all
 
 tt: all
-	./philo_bonus 4 410 200 100 
+	./philo_bonus 4 310 200 100 
 
 ttt: all
-	./philo_bonus 2 300 100 100 
+	./philo_bonus 4 410 200 100 10
 
 .PHONY: all clean fclean re

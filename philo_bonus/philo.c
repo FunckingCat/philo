@@ -6,70 +6,63 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 16:15:49 by unix              #+#    #+#             */
-/*   Updated: 2022/01/04 16:02:44 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/04 17:37:51 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-// void	*observer(void	*ptr)
-// {
-// 	t_philo	*philo;
+void	*observer(void	*ptr)
+{
+	t_philo	*philo;
 
-// 	philo = (t_philo *)ptr;
-// 	while (1)
-// 	{
-// 		pthread_mutex_lock(&philo->eating_m);
-// 		if (get_time() > philo->death_lim)
-// 		{
-// 			massage(philo, DIED);
-// 			pthread_mutex_unlock(&philo->eating_m);
-// 			pthread_mutex_unlock(&philo->state->death_occur);
-// 		}
-// 		pthread_mutex_unlock(&philo->eating_m);
-// 		usleep(1000);
-// 	}
-// }
+	philo = (t_philo *)ptr;
+	while (1)
+	{
+		if (get_time() > philo->death_lim)
+		{
+			massage(philo, DIED);
+			sem_post(philo->state->death_occur);
+		}
+		usleep(1000);
+	}
+}
 
-// void	eat(t_philo *self)
-// {
-// 	pthread_mutex_lock(&self->state->forks[self->fork_r]);
-// 	massage(self, TAKEN);
-// 	pthread_mutex_lock(&self->state->forks[self->fork_l]);
-// 	massage(self, TAKEN);
-// 	pthread_mutex_lock(&self->eating_m);
-// 	self->last_eat = get_time();
-// 	self->death_lim = self->last_eat + self->state->tm_die;
-// 	massage(self, EATING);
-// 	usleep(self->state->tm_eat * 1000);
-// 	self->eat_count++;
-// 	pthread_mutex_unlock(&self->eating_m);
-// 	pthread_mutex_unlock(&self->state->forks[self->fork_l]);
-// 	pthread_mutex_unlock(&self->state->forks[self->fork_r]);
-// }
+void	eat(t_philo *self)
+{
+	sem_wait(self->state->forks);
+	massage(self, TAKEN);
+	sem_wait(self->state->forks);
+	massage(self, TAKEN);
+	self->last_eat = get_time();
+	self->death_lim = self->last_eat + self->state->tm_die;
+	massage(self, EATING);
+	usleep(self->state->tm_eat * 1000);
+	self->eat_count++;
+	sem_post(self->state->forks);
+	sem_post(self->state->forks);
+}
 
 void	*philosoph(t_philo *self)
 {
-	// pthread_t	tid;
-	printf("Hey there im %d\n", self->name);
-	if (self->name == 3)
-		sem_post(self->state->death_occur);
-	// self->last_eat = get_time();
-	// self->death_lim = self->last_eat + self->state->tm_die;
-	// pthread_create(&tid, NULL, observer, ptr);
-	// pthread_detach(tid);
-	// if (self->name % 2 == 1)
-	// {
-	// 	massage(self, SLEEPING);
-	// 	usleep(self->state->tm_sleep * 1000);
-	// }
-	// else
-	// 	massage(self, THINKING);
-	// while (1)
-	// {
-	// 	eat(self);
-	// 	massage(self, SLEEPING);
-	// 	usleep(self->state->tm_sleep * 1000);
-	// 	massage(self, THINKING);
-	// }
+	pthread_t	tid;
+
+	self->last_eat = get_time();
+	self->death_lim = self->last_eat + self->state->tm_die;
+	pthread_create(&tid, NULL, observer, (void *)self);
+	pthread_detach(tid);
+	if (self->name % 2 == 1)
+	{
+		massage(self, THINKING);
+		usleep(self->state->tm_sleep * 1000);
+	}
+	while (1)
+	{
+		eat(self);
+		massage(self, SLEEPING);
+		usleep(self->state->tm_sleep * 1000);
+		massage(self, THINKING);
+		if (self->eat_count >= self->state->must_eat)
+			return (0);
+	}
 }
