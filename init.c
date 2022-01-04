@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 14:38:01 by unix              #+#    #+#             */
-/*   Updated: 2022/01/04 13:34:34 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/04 13:51:53 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	init(t_state *state, int argc, char **argv)
 	state->must_eat = 0;
 	if (argc == 6)
 		state->must_eat = ft_atoi(argv[5]);
-	if (state->amount < 2 || state->amount > 200 || state->tm_die < 60
+	if (state->amount < 1 || state->amount > 200 || state->tm_die < 60
 		|| state->tm_eat < 60 || state->tm_sleep < 60
 		|| state->must_eat < 0)
 		return (1);
