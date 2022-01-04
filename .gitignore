@@ -2,5 +2,10 @@
 
 !.gitignore
 !Makefile
-!*.c
+!philo
+!philo/*.c
+!philo/*.h
+!philo_bonus
+!philo_bonus/*.c
+!philo_bonus/*.h
 !*.h

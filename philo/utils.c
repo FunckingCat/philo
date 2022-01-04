@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 14:09:45 by unix              #+#    #+#             */
-/*   Updated: 2022/01/04 13:35:43 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/04 14:41:26 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	massage(t_philo *philo, char *msg)
 	pthread_mutex_lock(&philo->state->write);
 	if (msg[0] == 'd' && msg[1] == 'i')
 		dead = 1;
-	printf("%lu %d %s\n", delta, philo->name, msg);
+	printf("%lu %d %s\n", delta, philo->name + 1, msg);
 	pthread_mutex_unlock(&philo->state->write);
 }
 
