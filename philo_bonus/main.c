@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 10:47:22 by tyamcha           #+#    #+#             */
-/*   Updated: 2022/01/04 15:44:21 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/04 16:00:29 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,41 +36,42 @@
 // 	return (NULL);
 // }
 
-// int	spawn_philo(t_state *state)
-// {
-// 	int			i;
-// 	void		*philo;
-// 	pthread_t	tid;
+int	spawn_philo(t_state *state)
+{
+	int			i;
 
-// 	state->start = get_time();
-// 	i = 0;
-// 	if (state->must_eat > 0)
-// 	{
-// 		philo = (void *)state;
-// 		pthread_create(&tid, NULL, spectator, philo);
-// 		pthread_detach(tid);
-// 	}
-// 	while (i < state->amount)
-// 	{
-// 		philo = (void *)(&state->philos[i]);
-// 		pthread_create(&tid, NULL, philosoph, philo);
-// 		i++;
-// 	}
-// 	return (0);
-// }
+	state->start = get_time();
+	i = 0;
+	while (i < state->amount)
+	{
+		state->philos[i].pid = fork();
+		if (state->philos[i].pid < 0)
+			return (1);
+		else if (state->philos[i].pid == 0)
+		{
+			philosoph(&state->philos[i]);
+			exit(0);
+		}
+		i++;
+	}
+	return (0);
+}
 
 int	main(int argc, char **argv)
 {
+	int		i;
 	t_state	state;
 
 	if (argc < 5 || argc > 6)
 		return (error("bad arguments"));
 	if (init(&state, argc, argv))
 		return (clear_state(&state) && error("fatal error"));
-	// if (spawn_philo(&state))
-	// 	return (clear_state(&state) && error("threads error"));
-	// pthread_mutex_lock(&state.death_occur);
-	// pthread_mutex_unlock(&state.death_occur);
+	if (spawn_philo(&state))
+		return (clear_state(&state) && error("process error"));
+	sem_wait(state.death_occur);
+	i = 0;
+	while (i < state.amount)
+		kill(state.philos[i++].pid, SIGKILL);
 	clear_state(&state);
 	return (0);
 }

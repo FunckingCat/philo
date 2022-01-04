@@ -6,23 +6,24 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 10:47:27 by tyamcha           #+#    #+#             */
-/*   Updated: 2022/01/04 15:34:52 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/04 16:00:04 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
+# include <fcntl.h>
 # include <stdio.h>
+# include <stdint.h>
+# include <signal.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <pthread.h>
 # include <sys/time.h>
-# include <stdint.h>
 # include <inttypes.h>
+# include <sys/wait.h>
 # include <semaphore.h>
-# include <signal.h>
-# include <fcntl.h>
 
 # define SEM_FORK	"/sem_Fork"
 # define SEM_WRITE	"/sem_Write"
@@ -36,6 +37,7 @@
 
 typedef struct s_philo
 {
+	pid_t			pid;
 	int				name;
 	int				eat_count;
 	uint64_t		last_eat;
@@ -65,5 +67,6 @@ int			clear_state(t_state *state);
 int			error(char *msg);
 
 int			init(t_state *state, int argc, char **argv);
+void		*philosoph(t_philo *self);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: unix <unix@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/08 14:23:43 by unix              #+#    #+#              #
-#    Updated: 2022/01/04 15:38:40 by unix             ###   ########.fr        #
+#    Updated: 2022/01/04 16:01:52 by unix             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LIB = -lpthread
 
 HEADER = philo.h
 
-MAIN_FILES = main.c utils.c init.c
+MAIN_FILES = main.c utils.c init.c philo.c
 
 SRC = $(MAIN_FILES:.c=.o)
 
