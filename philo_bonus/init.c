@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 14:38:01 by unix              #+#    #+#             */
-/*   Updated: 2022/01/04 13:51:53 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/04 15:37:24 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,14 @@ int	init_forks(t_state *state)
 {
 	int	i;
 
-	pthread_mutex_init(&state->write, NULL);
-	pthread_mutex_init(&state->death_occur, NULL);
-	pthread_mutex_lock(&state->death_occur);
-	state->forks = malloc(sizeof(*(state->forks)) * state->amount);
-	if (!state->forks)
+	sem_unlink(SEM_FORK);
+	sem_unlink(SEM_WRITE);
+	sem_unlink(SEM_DEAD);
+	state->forks = sem_open(SEM_FORK, O_CREAT | O_EXCL, 0644, state->amount);
+	state->write = sem_open(SEM_WRITE, O_CREAT | O_EXCL, 0644, 1);
+	state->death_occur = sem_open(SEM_DEAD, O_CREAT | O_EXCL, 0644, 0);
+	if (state->forks < 0 || state->write < 0 || state->death_occur < 0)
 		return (1);
-	i = 0;
-	while (i < state->amount)
-		pthread_mutex_init(&state->forks[i++], NULL);
 	return (0);
 }
 
@@ -36,11 +35,8 @@ void	init_philos(t_state *state)
 	while (i < state->amount)
 	{
 		state->philos[i].name = i;
-		state->philos[i].fork_r = i;
-		state->philos[i].fork_l = (i + 1) % state->amount;
 		state->philos[i].eat_count = 0;
 		state->philos[i].state = state;
-		pthread_mutex_init(&state->philos[i].eating_m, NULL);
 		i++;
 	}
 }

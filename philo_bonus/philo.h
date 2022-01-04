@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 10:47:27 by tyamcha           #+#    #+#             */
-/*   Updated: 2022/01/04 13:36:51 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/04 15:34:52 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@
 # include <sys/time.h>
 # include <stdint.h>
 # include <inttypes.h>
+# include <semaphore.h>
+# include <signal.h>
+# include <fcntl.h>
+
+# define SEM_FORK	"/sem_Fork"
+# define SEM_WRITE	"/sem_Write"
+# define SEM_DEAD	"/sem_Dead"
 
 # define EATING "is eating"
 # define SLEEPING "is sleeping"
@@ -30,12 +37,10 @@
 typedef struct s_philo
 {
 	int				name;
-	int				fork_l;
-	int				fork_r;
 	int				eat_count;
 	uint64_t		last_eat;
 	uint64_t		death_lim;
-	pthread_mutex_t	eating_m;
+	sem_t			*eat_sem;
 	struct s_state	*state;
 }	t_philo;
 
@@ -48,23 +53,17 @@ typedef struct s_state
 	uint64_t		tm_die;
 	uint64_t		tm_eat;
 	uint64_t		tm_sleep;
-	pthread_mutex_t	*forks;
-	pthread_mutex_t	write;
-	pthread_mutex_t	death_occur;
+	sem_t			*forks;
+	sem_t			*write;
+	sem_t			*death_occur;
 }	t_state;
 
-//UTILS
 int			ft_atoi(const char *str);
 uint64_t	get_time(void);
 void		massage(t_philo *philo, char *msg);
-
-//EXIT
-int			error(char *msg);
 int			clear_state(t_state *state);
+int			error(char *msg);
 
-//INIT
 int			init(t_state *state, int argc, char **argv);
-
-void		*philosoph(void *ptr);
 
 #endif

@@ -6,19 +6,19 @@
 #    By: unix <unix@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/08 14:23:43 by unix              #+#    #+#              #
-#    Updated: 2022/01/02 18:27:30 by unix             ###   ########.fr        #
+#    Updated: 2022/01/04 15:38:40 by unix             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = philo
+NAME = philo_bonus
 CC = gcc
-#FLAGS = 
-FLAGS = -Wall -Werror -Wextra
+FLAGS = 
+#FLAGS = -Wall -Werror -Wextra
 LIB = -lpthread
 
 HEADER = philo.h
 
-MAIN_FILES = main.c utils.c init.c philo.c
+MAIN_FILES = main.c utils.c init.c
 
 SRC = $(MAIN_FILES:.c=.o)
 
@@ -41,9 +41,9 @@ fclean: clean
 re: fclean all
 
 tt: all
-	./philo 4 410 200 100 
+	./philo_bonus 4 410 200 100 
 
 ttt: all
-	./philo 2 300 100 100 
+	./philo_bonus 2 300 100 100 
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re

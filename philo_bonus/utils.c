@@ -6,26 +6,26 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 14:09:45 by unix              #+#    #+#             */
-/*   Updated: 2022/01/04 14:41:26 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/04 15:43:07 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	massage(t_philo *philo, char *msg)
-{
-	uint64_t	delta;
-	static int	dead = 0;
+// void	massage(t_philo *philo, char *msg)
+// {
+// 	uint64_t	delta;
+// 	static int	dead = 0;
 
-	if (dead > 0)
-		return ;
-	delta = get_time() - philo->state->start;
-	pthread_mutex_lock(&philo->state->write);
-	if (msg[0] == 'd' && msg[1] == 'i')
-		dead = 1;
-	printf("%lu %d %s\n", delta, philo->name + 1, msg);
-	pthread_mutex_unlock(&philo->state->write);
-}
+// 	if (dead > 0)
+// 		return ;
+// 	delta = get_time() - philo->state->start;
+// 	pthread_mutex_lock(&philo->state->write);
+// 	if (msg[0] == 'd' && msg[1] == 'i')
+// 		dead = 1;
+// 	printf("%lu %d %s\n", delta, philo->name + 1, msg);
+// 	pthread_mutex_unlock(&philo->state->write);
+// }
 
 int	ft_atoi(const char *str)
 {
@@ -62,22 +62,22 @@ int	clear_state(t_state *state)
 {
 	int	i;
 
-	if (state->forks)
-	{
-		i = 0;
-		while (i < state->amount)
-			pthread_mutex_destroy(&state->forks[i++]);
-		free(state->forks);
-	}
-	if (state->philos)
-	{
-		i = 0;
-		while (i < state->amount)
-			pthread_mutex_destroy(&state->philos[i++].eating_m);
-		free(state->philos);
-	}
-	pthread_mutex_destroy(&state->write);
-	pthread_mutex_destroy(&state->death_occur);
+	// if (state->forks)
+	// {
+	// 	i = 0;
+	// 	while (i < state->amount)
+	// 		pthread_mutex_destroy(&state->forks[i++]);
+	// 	free(state->forks);
+	// }
+	// if (state->philos)
+	// {
+	// 	i = 0;
+	// 	while (i < state->amount)
+	// 		pthread_mutex_destroy(&state->philos[i++].eating_m);
+	// 	free(state->philos);
+	// }
+	// pthread_mutex_destroy(&state->write);
+	// pthread_mutex_destroy(&state->death_occur);
 	return (1);
 }
 
