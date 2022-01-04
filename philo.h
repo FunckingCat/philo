@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 10:47:27 by tyamcha           #+#    #+#             */
-/*   Updated: 2022/01/02 18:29:39 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/04 13:34:40 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@
 typedef struct s_philo
 {
 	int				name;
-	int				is_eating;
 	uint64_t		last_eat;
 	uint64_t		death_lim;
 	int				fork_l;
@@ -38,7 +37,6 @@ typedef struct s_philo
 	int				eat_count;
 	struct s_state	*state;
 	pthread_mutex_t	eating_m;
-	pthread_mutex_t	eat_m;
 }	t_philo;
 
 typedef struct s_state
