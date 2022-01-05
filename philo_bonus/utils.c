@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 14:09:45 by unix              #+#    #+#             */
-/*   Updated: 2022/01/05 11:11:55 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/05 12:28:45 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@ void	massage(t_philo *philo, char *msg)
 	static int	dead = 0;
 
 	sem_wait(philo->state->write);
+	delta = get_time() - philo->state->start;
 	if (dead > 0)
 		return ;
-	delta = get_time() - philo->state->start;
 	if (msg[0] == 'd' && msg[1] == 'i')
 		dead = 1;
 	printf("%lu %d %s\n", delta, philo->name + 1, msg);
+	usleep(100);
 	sem_post(philo->state->write);
 }
 

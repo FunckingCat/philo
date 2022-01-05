@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 16:15:49 by unix              #+#    #+#             */
-/*   Updated: 2022/01/05 12:19:00 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/05 12:24:01 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ void	*philosoph(t_philo *self)
 		if (self->state->must_eat > 0 && 
 			self->eat_count >= self->state->must_eat)
 			return (0);
+		usleep(100);
 	}
 }
