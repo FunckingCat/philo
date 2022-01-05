@@ -6,13 +6,12 @@
 #    By: unix <unix@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/08 14:23:43 by unix              #+#    #+#              #
-#    Updated: 2022/01/05 12:31:26 by unix             ###   ########.fr        #
+#    Updated: 2022/01/05 12:49:40 by unix             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo_bonus
 CC = gcc
-#FLAGS = 
 FLAGS = -Wall -Werror -Wextra
 LIB = -lpthread
 

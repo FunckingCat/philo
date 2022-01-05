@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 16:15:49 by unix              #+#    #+#             */
-/*   Updated: 2022/01/05 12:36:53 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/05 12:50:17 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ void	*philosoph(t_philo *self)
 	self->death_lim = self->last_eat + self->state->tm_die;
 	pthread_create(&tid, NULL, observer, (void *)self);
 	pthread_detach(tid);
-	if (self->name % 2 == 1 || (self->state->amount % 2 == 1 && 
-		self->name == self->state->amount - 1))
+	if (self->name % 2 == 1 || (self->state->amount % 2 == 1
+			&& self->name == self->state->amount - 1))
 	{
 		massage(self, THINKING);
 		usleep(self->state->tm_sleep * 1000);
@@ -67,8 +67,8 @@ void	*philosoph(t_philo *self)
 		massage(self, SLEEPING);
 		usleep(self->state->tm_sleep * 1000);
 		massage(self, THINKING);
-		if (self->state->must_eat > 0 && 
-			self->eat_count >= self->state->must_eat)
+		if (self->state->must_eat > 0
+			&& self->eat_count >= self->state->must_eat)
 			return (0);
 		usleep(100);
 	}

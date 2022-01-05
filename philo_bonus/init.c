@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 14:38:01 by unix              #+#    #+#             */
-/*   Updated: 2022/01/05 12:36:23 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/05 12:49:11 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_strcpy(char *dst, const char *src)
 	return (i);
 }
 
-void	make_name(char	*buf, int	pos)
+void	make_name(char *buf, int pos)
 {
 	int	i;
 

@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 10:47:27 by tyamcha           #+#    #+#             */
-/*   Updated: 2022/01/05 12:34:09 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/05 12:48:59 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void		massage(t_philo *philo, char *msg);
 int			clear_state(t_state *state);
 int			error(char *msg);
 int			ft_strcpy(char *dst, const char *src);
-void		make_name(char	*buf, int	pos);
+void		make_name(char *buf, int pos);
 
 int			init(t_state *state, int argc, char **argv);
 void		*philosoph(t_philo *self);
