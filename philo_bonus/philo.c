@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 16:15:49 by unix              #+#    #+#             */
-/*   Updated: 2022/01/05 12:50:17 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/05 13:02:38 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	*philosoph(t_philo *self)
 			&& self->name == self->state->amount - 1))
 	{
 		massage(self, THINKING);
-		usleep(self->state->tm_sleep * 1000);
+		usleep(self->state->tm_eat * 500);
 	}
 	while (1)
 	{
