@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 14:09:45 by unix              #+#    #+#             */
-/*   Updated: 2022/01/05 12:28:45 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/05 12:41:53 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	massage(t_philo *philo, char *msg)
 	delta = get_time() - philo->state->start;
 	if (dead > 0)
 		return ;
-	if (msg[0] == 'd' && msg[1] == 'i')
+	if (msg[0] == 'd')
 		dead = 1;
 	printf("%lu %d %s\n", delta, philo->name + 1, msg);
-	usleep(100);
+	usleep(10);
 	sem_post(philo->state->write);
 }
 
@@ -61,24 +61,23 @@ uint64_t	get_time(void)
 
 int	clear_state(t_state *state)
 {
-	int	i;
+	int		i;
+	char	name[100];
 
-	// if (state->forks)
-	// {
-	// 	i = 0;
-	// 	while (i < state->amount)
-	// 		pthread_mutex_destroy(&state->forks[i++]);
-	// 	free(state->forks);
-	// }
-	// if (state->philos)
-	// {
-	// 	i = 0;
-	// 	while (i < state->amount)
-	// 		pthread_mutex_destroy(&state->philos[i++].eating_m);
-	// 	free(state->philos);
-	// }
-	// pthread_mutex_destroy(&state->write);
-	// pthread_mutex_destroy(&state->death_occur);
+	sem_unlink(SEM_FORK);
+	sem_unlink(SEM_WRITE);
+	sem_unlink(SEM_DEAD);
+	if (state->philos)
+	{
+		i = 0;
+		while (i < state->amount)
+		{
+			make_name(name, i);
+			sem_unlink(name);
+			i++;
+		}
+		free(state->philos);
+	}
 	return (1);
 }
 

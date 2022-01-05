@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 14:38:01 by unix              #+#    #+#             */
-/*   Updated: 2022/01/05 12:19:23 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/05 12:36:23 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,12 @@
 
 int	init_forks(t_state *state)
 {
-	int	i;
-
 	sem_unlink(SEM_FORK);
 	sem_unlink(SEM_WRITE);
 	sem_unlink(SEM_DEAD);
 	state->forks = sem_open(SEM_FORK, O_CREAT | O_EXCL, 0644, state->amount);
 	state->write = sem_open(SEM_WRITE, O_CREAT | O_EXCL, 0644, 1);
 	state->death_occur = sem_open(SEM_DEAD, O_CREAT | O_EXCL, 0644, 0);
-	if (state->forks < 0 || state->write < 0 || state->death_occur < 0)
-		return (1);
 	return (0);
 }
 
