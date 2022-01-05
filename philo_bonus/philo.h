@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 10:47:27 by tyamcha           #+#    #+#             */
-/*   Updated: 2022/01/04 16:00:04 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/05 12:19:07 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define SEM_FORK	"/sem_Fork"
 # define SEM_WRITE	"/sem_Write"
 # define SEM_DEAD	"/sem_Dead"
+# define SEM_PHILO	"/sem_Philo"
 
 # define EATING "is eating"
 # define SLEEPING "is sleeping"

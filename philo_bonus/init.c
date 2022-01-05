@@ -6,7 +6,7 @@
 /*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 14:38:01 by unix              #+#    #+#             */
-/*   Updated: 2022/01/04 15:37:24 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/05 12:19:23 by unix             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,38 @@ int	init_forks(t_state *state)
 	return (0);
 }
 
-void	init_philos(t_state *state)
+int	ft_strcpy(char *dst, const char *src)
 {
 	int	i;
+
+	i = 0;
+	while (src[i])
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = 0;
+	return (i);
+}
+
+void	make_name(char	*buf, int	pos)
+{
+	int	i;
+
+	i = ft_strcpy(buf, SEM_PHILO);
+	pos++;
+	while (pos > 0)
+	{
+		buf[i++] = (pos % 10) + '0';
+		pos /= 10;
+	}
+	buf[i] = 0;
+}
+
+void	init_philos(t_state *state)
+{
+	int		i;
+	char	name[100];
 
 	i = 0;
 	while (i < state->amount)
@@ -37,6 +66,9 @@ void	init_philos(t_state *state)
 		state->philos[i].name = i;
 		state->philos[i].eat_count = 0;
 		state->philos[i].state = state;
+		make_name(name, i);
+		sem_unlink(name);
+		state->philos[i].eat_sem = sem_open(name, O_CREAT | O_EXCL, 0644, 1);
 		i++;
 	}
 }
