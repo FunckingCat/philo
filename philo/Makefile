@@ -3,16 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: unix <unix@student.42.fr>                  +#+  +:+       +#+         #
+#    By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/08 14:23:43 by unix              #+#    #+#              #
-#    Updated: 2022/01/02 18:27:30 by unix             ###   ########.fr        #
+#    Updated: 2022/01/08 13:51:21 by tyamcha          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 CC = gcc
-#FLAGS = 
 FLAGS = -Wall -Werror -Wextra
 LIB = -lpthread
 
@@ -40,10 +39,4 @@ fclean: clean
 
 re: fclean all
 
-tt: all
-	./philo 4 410 200 100 
-
-ttt: all
-	./philo 2 300 100 100 
-
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re

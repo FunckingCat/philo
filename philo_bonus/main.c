@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 10:47:22 by tyamcha           #+#    #+#             */
-/*   Updated: 2022/01/05 11:47:04 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/08 13:50:19 by tyamcha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,11 @@ int	main(int argc, char **argv)
 	t_state	state;
 
 	if (argc < 5 || argc > 6)
-		return (error("bad arguments"));
+		return (error("arguments ammount"));
 	if (init(&state, argc, argv))
-		return (clear_state(&state) && error("fatal error"));
+		return (clear_state(&state) && error("arguments"));
 	if (spawn_philo(&state))
-		return (clear_state(&state) && error("process error"));
+		return (clear_state(&state) && error("runtime"));
 	sem_wait(state.death_occur);
 	i = 0;
 	while (i < state.amount)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 10:47:27 by tyamcha           #+#    #+#             */
-/*   Updated: 2022/01/05 12:48:59 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/08 13:32:58 by tyamcha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int			clear_state(t_state *state);
 int			error(char *msg);
 int			ft_strcpy(char *dst, const char *src);
 void		make_name(char *buf, int pos);
-
 int			init(t_state *state, int argc, char **argv);
 void		*philosoph(t_philo *self);
 
