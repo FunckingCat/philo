@@ -6,7 +6,7 @@
 /*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 14:09:45 by unix              #+#    #+#             */
-/*   Updated: 2022/01/08 13:50:43 by tyamcha          ###   ########.fr       */
+/*   Updated: 2022/01/08 14:10:49 by tyamcha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,15 @@
 void	massage(t_philo *philo, char *msg)
 {
 	uint64_t	delta;
-	static int	dead = 0;
 
 	sem_wait(philo->state->write);
 	delta = get_time() - philo->state->start;
-	if (dead > 0)
-		return ;
-	if (msg[0] == 'd')
-		dead = 1;
 	printf("%llu %d %s\n", delta, philo->name + 1, msg);
-	usleep(10);
+	if (msg[0] == 'd')
+	{
+		sem_post(philo->state->death_occur);
+		sem_wait(philo->state->write);
+	}
 	sem_post(philo->state->write);
 }
 
