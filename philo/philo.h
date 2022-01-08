@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 10:47:27 by tyamcha           #+#    #+#             */
-/*   Updated: 2022/01/04 13:36:51 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/08 13:31:22 by tyamcha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,12 @@ typedef struct s_state
 	pthread_mutex_t	death_occur;
 }	t_state;
 
-//UTILS
 int			ft_atoi(const char *str);
 uint64_t	get_time(void);
 void		massage(t_philo *philo, char *msg);
-
-//EXIT
 int			error(char *msg);
 int			clear_state(t_state *state);
-
-//INIT
 int			init(t_state *state, int argc, char **argv);
-
 void		*philosoph(void *ptr);
 
 #endif

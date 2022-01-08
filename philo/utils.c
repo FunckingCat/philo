@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: unix <unix@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 14:09:45 by unix              #+#    #+#             */
-/*   Updated: 2022/01/05 13:00:21 by unix             ###   ########.fr       */
+/*   Updated: 2022/01/08 13:30:10 by tyamcha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	massage(t_philo *philo, char *msg)
 	pthread_mutex_lock(&philo->state->write);
 	if (msg[0] == 'd' && msg[1] == 'i')
 		dead = 1;
-	printf("%lu %d %s\n", delta, philo->name + 1, msg);
+	printf("%llu %d %s\n", delta, philo->name + 1, msg);
 	pthread_mutex_unlock(&philo->state->write);
 }
 
