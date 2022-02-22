@@ -11,9 +11,9 @@ This project is also a good lesson in C optimization as we need to save every bi
 ## Usage 
 
 1. philo: multi-threads and use of mutex
-  
-  make && ./philo tm_die_ms tm_eat_ms tm_sleep_ms
+
+        make && ./philo tm_die_ms tm_eat_ms tm_sleep_ms
  
 2. philo_bonus: multi-processes and use of semaphore
 
-  mkae bonus && ./philo_bonus tm_die_ms tm_eat_ms tm_sleep_ms
+        make bonus && ./philo_bonus tm_die_ms tm_eat_ms tm_sleep_ms

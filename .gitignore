@@ -9,3 +9,4 @@
 !philo_bonus/*.c
 !philo_bonus/*.h
 !*.h
+!README*
